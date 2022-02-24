@@ -161,6 +161,11 @@ if plot_bads==0
         fprintf('.. done.\n')
     end
     
+    % save info in struct under EEG.etc.TBT
+    tbt_info = struct('nbadchan', { nbadchan }, 'nbadtrial', { nbadtrial }, ...
+        'badchan', { bChan_ind }, 'badtrial', { bTrial_ind }); 
+    EEG.etc.TBT = tbt_info;
+    
     fprintf('pop_TBT(): eeg_checkset().')
     evalc('EEG = eeg_checkset(EEG);');
     fprintf('.. done.\n')
